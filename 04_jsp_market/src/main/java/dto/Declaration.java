@@ -14,4 +14,5 @@ import lombok.NoArgsConstructor;
 public class Declaration {
 	int no;
 	int asdf;
+	String name;
 }
