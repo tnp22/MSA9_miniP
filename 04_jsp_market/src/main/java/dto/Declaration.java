@@ -13,4 +13,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Declaration {
 	int no;
+	int asdf;
 }
