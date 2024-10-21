@@ -1,0 +1,80 @@
+drop table `user`;
+-- 스키마 이름 jsp_market
+CREATE TABLE `user` (
+  `uuid` INT NOT NULL AUTO_INCREMENT COMMENT '유저번호',
+  `id` VARCHAR(45) not null COMMENT '유저id',
+  `passwd` VARCHAR(45) NOT NULL COMMENT '비밀번호',
+	`name` VARCHAR(45) NOT NULL UNIQUE COMMENT '유저이름',
+  `phone` varchar(25) not null COMMENT '전화번호',
+  `email` varchar(30) NULL COMMENT '이메일',
+  `area` varchar(40) null COMMENT '지역',
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  PRIMARY KEY (`uuid`))
+COMMENT = '유저';
+
+CREATE TABLE `board` (
+  `no` INT NOT NULL AUTO_INCREMENT COMMENT '보드번호',
+  `title` VARCHAR(45) NOT NULL COMMENT '타이틀',
+  `writer` VARCHAR(45) NOT NULL COMMENT '게시자',
+  `content` TEXT NULL COMMENT '내용',
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  `uuid` INT NOT NULL COMMENT '유저번호',
+  FOREIGN KEY (`writer`) REFERENCES `user`(`name`) ON UPDATE CASCADE,
+  PRIMARY KEY (`no`))
+COMMENT = '게시판';
+
+CREATE TABLE `comment` (
+  `no` INT NOT NULL AUTO_INCREMENT COMMENT '댓글번호',
+  `board_no` INT NOT NULL COMMENT '보드번호',
+  `writer` VARCHAR(45) NOT NULL COMMENT '글쓴이',
+  `content` TEXT NULL COMMENT '내용',
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일자',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  `uuid` INT NOT NULL COMMENT '유저번호',
+  FOREIGN KEY (`board_no`) REFERENCES `board`(`no`) ON DELETE CASCADE,
+  FOREIGN KEY (`writer`) REFERENCES `user`(`name`) ON UPDATE CASCADE,
+  PRIMARY KEY (`no`))
+COMMENT = '댓글';
+
+CREATE TABLE `user_files` (
+  `no` INT NOT NULL AUTO_INCREMENT,
+  `file_name` VARCHAR(45) NOT NULL,
+  `file_path` VARCHAR(45) NOT NULL,
+  `parent_no` INT NOT NULL,
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  PRIMARY KEY (`no`))
+COMMENT = '유저파일';
+
+CREATE TABLE `board_files` (
+  `no` INT NOT NULL AUTO_INCREMENT,
+  `file_name` VARCHAR(45) NOT NULL,
+  `file_path` VARCHAR(45) NOT NULL,
+  `board_no` INT NOT NULL,
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  FOREIGN KEY (`board_no`) REFERENCES `board`(`no`) ON DELETE CASCADE,
+  PRIMARY KEY (`no`))
+COMMENT = '보드파일';
+
+CREATE TABLE `declaration` (
+  `no` INT NOT NULL AUTO_INCREMENT,
+  `writer_no` INT NOT NULL,
+  `board_no` INT NOT NULL,
+  `content` TEXT NULL COMMENT '내용',
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  FOREIGN KEY (`board_no`) REFERENCES `board`(`no`) ON DELETE CASCADE,
+  PRIMARY KEY (`no`))
+COMMENT = '보드파일';
+
+CREATE TABLE `persistence_logins` (
+    `no` int NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT '번호',
+    `username` varchar(100) NULL COMMENT '회원 아이디',
+    `token` varchar(255) NULL COMMENT '인증 토큰',
+    `expiry_date` timestamp NULL COMMENT '만료시간',
+    `reg_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
+    `upd_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자'
+);
