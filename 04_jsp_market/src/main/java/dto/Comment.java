@@ -13,8 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class Comment {
 	int no;
-	int board_no;
-	String writer;
+	int room_no;
 	String content;
 	Date reg_date;
 	Date upd_date;

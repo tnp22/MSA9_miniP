@@ -15,7 +15,8 @@ public class Board {
 	int no;
 	String title;
 	String category;
-	String writer;
+	int price;
+	int status;
 	String content;
 	Date reg_date;
 	Date upd_date;

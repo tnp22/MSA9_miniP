@@ -7,12 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 public class Declaration {
-	int no;
-	int asdf;
-	String name;
+	//담당하신 분있음
 }

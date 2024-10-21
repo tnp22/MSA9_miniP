@@ -19,7 +19,7 @@ public class User {
 	private String phone;
 	private String email;
 	private String area;
-	private int tempo;
+	private int permit;
 	private Boolean enabled;
 	private Date regDate;
 	private Date updDate;
