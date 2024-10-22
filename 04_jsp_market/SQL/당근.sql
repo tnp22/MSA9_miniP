@@ -60,7 +60,6 @@ COMMENT = '댓글';
 
 CREATE TABLE `files` (
   `no` INT NOT NULL AUTO_INCREMENT,
-  `file_name` VARCHAR(45) NOT NULL,
   `file_path` VARCHAR(1000) NOT NULL,
   `board_no` INT NULL,
   `board_table` VARCHAR(45) NOT NULL,
