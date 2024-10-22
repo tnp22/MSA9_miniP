@@ -26,11 +26,17 @@ public class BoardServiceImpl implements BoardService {
 		Board index = indexDAO.select(no);
 		return index;
 	}
+	
+	@Override
+	public List<Board> list() {
+		List<Board> boardList = indexDAO.list();
+		return boardList;
+	}
 
 	@Override
-	public List<Board> select(String id) {
-		
-		return null;
+	public List<Board> list(int uuid) {
+		List<Board> boardList = indexDAO.list(uuid);
+		return boardList;
 	}
 
 	@Override
@@ -43,8 +49,5 @@ public class BoardServiceImpl implements BoardService {
 	public boolean delete(int uuid) {
 		boolean result = indexDAO.delete(uuid);
 		return result;
-	}
-
-
-	
+	}	
 }
