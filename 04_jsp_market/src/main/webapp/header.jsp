@@ -59,8 +59,8 @@
             <div class="menu-center">
                 <nav class="pc">
                     <ul>
-                        <li><a href="home.html">회원가입</a></li>
-                        <li><a href="board.html">로그인</a></li>
+                        <li><a href="signUp.jsp">회원가입</a></li>
+                        <li><a href="login.jsp">로그인</a></li>
                     </ul>
                 </nav>
             </div>

@@ -22,6 +22,6 @@ public interface BoardService {
 	public boolean update(Board index);
 	
 	//보드 삭제
-	public boolean delete(int uuid);
+	public boolean delete(int no);
 	
 }

@@ -17,9 +17,21 @@
 <body>
 	<div id="header"></div>
 	<main>
-		<div>
-			<img class="main_img" src="img/apple.png" alt="">
+		<div class="main_img">
+			<div class="main_img_content">
+            APPLE <br>
+            MARKET
+        	</div>
 		</div>
+        <!-- 슬라이드 -->
+        <section id="section1">
+            <div class="slide">
+                <div class="item"><img src="img/float.webp" width="100%" alt="이미지"></div>
+                <div class="item"><img src="img/ac6.webp" width="100%" alt="이미지"></div>
+                <div class="item"><img src="img/ac6.jpg" width="100%" alt="이미지"></div>
+                <div class="item"><img src="img/float.webp" width="100%" alt="이미지"></div>
+            </div>
+        </section>
 		<div>
 			<div>
 				컨테이너
