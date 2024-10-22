@@ -34,6 +34,17 @@ CREATE TABLE `board` (
   PRIMARY KEY (`no`))
 COMMENT = '게시판';
 
+CREATE TABLE `comment_room` (
+  `no` INT NOT NULL AUTO_INCREMENT COMMENT '댓글번호',
+  `board_no` INT NOT NULL COMMENT '보드번호',
+  `main_no` int NOT NULL COMMENT '글쓴이',
+  `sub_no`  int not null comment '손님',
+  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일자',
+  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
+  FOREIGN KEY (`board_no`) REFERENCES `board`(`no`) ON DELETE CASCADE,
+  PRIMARY KEY (`no`))
+COMMENT = '댓글창';
+
 CREATE TABLE `comment` (
   `no` INT NOT NULL AUTO_INCREMENT COMMENT '댓글번호',
   `room_no` INT NOT NULL COMMENT '보드번호',
@@ -45,38 +56,19 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`no`))
 COMMENT = '댓글';
 
-CREATE TABLE `comment_room` (
-  `no` INT NOT NULL AUTO_INCREMENT COMMENT '댓글번호',
-  `board_no` INT NOT NULL COMMENT '보드번호',
-  `main_no` int NOT NULL COMMENT '글쓴이',
-  `sub_no`  int not null comment '손님',
-  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '수정일자',
-  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
-  `uuid` INT NOT NULL COMMENT '유저번호',
-  FOREIGN KEY (`board_no`) REFERENCES `board`(`no`) ON DELETE CASCADE,
-  PRIMARY KEY (`no`))
-COMMENT = '댓글창';
 
-CREATE TABLE `user_files` (
+
+CREATE TABLE `files` (
   `no` INT NOT NULL AUTO_INCREMENT,
   `file_name` VARCHAR(45) NOT NULL,
-  `file_path` VARCHAR(45) NOT NULL,
-  `parent_no` INT NOT NULL,
+  `file_path` VARCHAR(1000) NOT NULL,
+  `board_no` INT NULL,
+  `board_table` VARCHAR(45) NOT NULL,
+  `code` INT not null, -- 0:메인이미지 1:이벤트 2:프로필 3:보드
   `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
   `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
   PRIMARY KEY (`no`))
-COMMENT = '유저파일';
-
-CREATE TABLE `board_files` (
-  `no` INT NOT NULL AUTO_INCREMENT,
-  `file_name` VARCHAR(45) NOT NULL,
-  `file_path` VARCHAR(45) NOT NULL,
-  `board_no` INT NOT NULL,
-  `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
-  `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
-  FOREIGN KEY (`board_no`) REFERENCES `board`(`no`) ON DELETE CASCADE,
-  PRIMARY KEY (`no`))
-COMMENT = '보드파일';
+COMMENT = '파일';
 
 CREATE TABLE `declaration` (
   `no` INT NOT NULL AUTO_INCREMENT,
