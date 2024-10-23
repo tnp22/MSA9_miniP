@@ -1,7 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="jstl.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,13 +21,13 @@
                 </a>
             </li>
             <li>
-                <a href="chatRoom">
+                <a href="chatRoom.jsp">
                     <h3>채팅</h3>
                     <p>채팅룸 리스트</p>
                 </a>
             </li>
             <li>
-                <a href="myPage">
+                <a href="myPage.jsp">
                     <h3>마이페이지</h3>
                     <p>회원정보수정,이미지변경,회원탈퇴</p>
                 </a>
@@ -45,16 +42,11 @@
 	
     <!-- 헤더 -->
     <header>
-        <!-- util -->
-<!--         <div class="util">
-            <ul class="util-menu">
-            </ul>
-        </div> -->
         <!-- menu -->
         <div class="menu">
             <div class="menu-left">
                 <!-- <a href=""><i class="fa fa-user"></i></a> -->
-                <a href="main.jsp"><img class="menu-left-img" src="img/apple.png" alt="로고"/></a>
+                <a href="main.jsp"><img class="menu-left-img" src="static/img/apple.png" alt="로고"/></a>
             </div>
             <div class="menu-center">
                 <nav class="pc">

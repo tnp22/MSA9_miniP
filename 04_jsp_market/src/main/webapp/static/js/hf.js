@@ -4,14 +4,14 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Header 삽입
-    fetch('header.jsp')
+    fetch('layout/header.jsp')
         .then(response => response.text())
         .then(data => {
             document.getElementById('header').innerHTML = data;
         });
     
     // Footer 삽입
-    fetch('footer.jsp')
+    fetch('layout/footer.jsp')
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer').innerHTML = data;
