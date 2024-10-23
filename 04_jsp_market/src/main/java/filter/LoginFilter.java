@@ -79,7 +79,7 @@ public class LoginFilter extends HttpFilter implements Filter {
 			
 			// 로그인 여부 확인
 			HttpSession session = httpRequest.getSession();
-			String loginId = (String) session.getAttribute("loginId");
+			String loginId = (String) session.getAttribute("loginUuid");
 			User loginUser = (User) session.getAttribute("loginUser");
 			
 			// 이미 로그인 됨

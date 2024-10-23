@@ -80,6 +80,7 @@ public class UserDAO extends JDBConnection {
 			psmt.setString(1, id);
 			rs=psmt.executeQuery();
 			if(rs.next()) {
+				user = new User(); // User 객체 생성
 				user.setUuid(rs.getInt("uuid"));
 				user.setId(rs.getString("id"));
 				user.setPasswd(rs.getString("passwd"));
@@ -93,7 +94,7 @@ public class UserDAO extends JDBConnection {
 				user.setUpdDate(rs.getTimestamp("upd_date"));
 			}
 		} catch (Exception e) {
-			System.err.println("UserDAO : 회원 정보 번호로 조회 시 예외 발생");
+			System.err.println("UserDAO : 회원 aaa정보 번호로 조회 시 예외 발생");
 		}
 		return user;
 	}
