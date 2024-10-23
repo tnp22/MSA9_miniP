@@ -18,12 +18,6 @@
 <body>
 	<div id="header"></div>
 	<main>
-		<div class="main_img">
-			<div class="main_img_content">
-            APPLE <br>
-            MARKET
-        	</div>
-		</div>
         <!-- 슬라이드 -->
         <section id="section1">
             <div class="slide">
@@ -34,10 +28,10 @@
             </div>
         </section>
 		<div>
-			<div>
+			<div class="">
 				컨테이너
 			</div>
-			<a href="">더보기..</a>
+			<a class="" href="">더보기..</a>
 		</div>
 	</main>
 	<div id="footer"></div>

@@ -24,13 +24,13 @@
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="chatRoom">
                     <h3>채팅</h3>
                     <p>채팅룸 리스트</p>
                 </a>
             </li>
             <li>
-                <a href="">
+                <a href="myPage">
                     <h3>마이페이지</h3>
                     <p>회원정보수정,이미지변경,회원탈퇴</p>
                 </a>
@@ -82,5 +82,10 @@
         </div>
 
     </header>
+    <div class="main_img">
+		<div class="main_img_content">
+            APPLE MARKET
+        </div>
+	</div>
 </body>
 </html>
