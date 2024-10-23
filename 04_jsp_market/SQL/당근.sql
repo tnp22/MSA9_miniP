@@ -2,8 +2,7 @@ drop table `user`;
 drop table `board`;
 drop table `comment`;
 drop table `comment_room`;
-drop table `user_files`;
-drop table `board_files`;
+drop table `files`;
 drop table `declaration`;
 drop table `persistence_logins`;
 -- 스키마 이름 jsp_market
@@ -26,7 +25,7 @@ CREATE TABLE `board` (
   `no` INT NOT NULL AUTO_INCREMENT COMMENT '보드번호',
   `title` VARCHAR(45) NOT NULL COMMENT '타이틀',
   `category` VARCHAR(45) NOT NULL COMMENT '카테고리',
-  `price` int not null comment '가격',
+  `price` int null comment '가격',
   `status` int not null comment '판매상태',
   `content` TEXT NULL COMMENT '내용',
   `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
