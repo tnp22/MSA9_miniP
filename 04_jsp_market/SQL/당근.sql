@@ -1,6 +1,7 @@
 drop table `user`;
 drop table `board`;
 drop table `comment`;
+drop table `comment_room`;
 drop table `user_files`;
 drop table `board_files`;
 drop table `declaration`;
@@ -61,8 +62,8 @@ COMMENT = '댓글';
 CREATE TABLE `files` (
   `no` INT NOT NULL AUTO_INCREMENT,
   `file_path` VARCHAR(1000) NOT NULL,
-  `board_no` INT NULL,
-  `board_table` VARCHAR(45) NOT NULL,
+  `table_no` INT NULL,
+  `table_name` VARCHAR(45) NOT NULL,
   `code` INT not null, -- 0:메인이미지 1:이벤트 2:프로필 3:보드
   `reg_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록시간',
   `upd_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일자',
