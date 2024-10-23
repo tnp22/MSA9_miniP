@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User_files {
+public class Files {
 	int no;
-	String file_name;
 	String file_path;
-	int parent_no;
+	int table_no;
+	String table_name;
+	int code;
 	Date reg_date;
 	Date upd_date;
 }

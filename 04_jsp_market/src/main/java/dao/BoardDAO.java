@@ -1,6 +1,9 @@
 package dao;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.alohaclass.jdbc.dao.BaseDAOImpl;
 
@@ -31,6 +34,47 @@ public class BoardDAO extends BaseDAOImpl<Board>  {
 	public String table() {
 		return "board";
 	}
+	
+	public List<Board> list(int uuid) {
+	// 게시글 목록을 담을 컬렉션 객체 생성
+	List<Board> boardList = new ArrayList<Board>();
+
+	// SQL 작성
+	String sql = "SELECT * " 
+			+ " FROM board"
+			+ " WHERE uuid = ?";
+
+	try {
+		// 1. SQL 실행 객체 생성 - Statement (stmt)
+		psmt = con.prepareStatement(sql);
+		psmt.setInt(1, uuid);
+		// 2. SQL 실행 요청 -> 결과 ResultSet (rs)
+		rs = psmt.executeQuery();
+		// 3. 조회된 결과를 리스트(boardList)에 추가
+		while (rs.next()) {
+			Board board = new Board();
+			// 결과 데이터 가져오기
+			// rs.getXXX("컬럼명") : 해당 컬럼의 데이터를 반환
+			board.setNo(rs.getInt("no"));
+			board.setTitle(rs.getString("title"));
+			board.setCategory(rs.getString("category"));
+			board.setPrice(rs.getInt("price"));
+			board.setStatus(rs.getInt("status"));
+			board.setContent(rs.getString("content"));
+			board.setReg_date(rs.getTimestamp("reg_date"));
+			board.setUpd_date(rs.getTimestamp("upd_date"));
+			board.setUuid(rs.getInt("uuid"));
+			// 게시글 목록 추가
+			boardList.add(board);
+		}
+		// 4. 게시글 목록 반환
+
+	} catch (SQLException e) {
+		System.err.println("BoardDAO : list(uuid) 예외발생");
+		e.printStackTrace();
+	}
+	return boardList;
+}
 	
 //	public int insert(Board index) {
 //		int result = 0;
@@ -92,46 +136,7 @@ public class BoardDAO extends BaseDAOImpl<Board>  {
 //		return boardList;
 //	}
 //	
-//	public List<Board> list(int uuid) {
-//		// 게시글 목록을 담을 컬렉션 객체 생성
-//		List<Board> boardList = new ArrayList<Board>();
-//
-//		// SQL 작성
-//		String sql = "SELECT * " 
-//				+ " FROM board"
-//				+ " WHERE uuid = ?";
-//
-//		try {
-//			// 1. SQL 실행 객체 생성 - Statement (stmt)
-//			psmt = con.prepareStatement(sql);
-//			psmt.setInt(1, uuid);
-//			// 2. SQL 실행 요청 -> 결과 ResultSet (rs)
-//			rs = psmt.executeQuery();
-//			// 3. 조회된 결과를 리스트(boardList)에 추가
-//			while (rs.next()) {
-//				Board board = new Board();
-//				// 결과 데이터 가져오기
-//				// rs.getXXX("컬럼명") : 해당 컬럼의 데이터를 반환
-//				board.setNo(rs.getInt("no"));
-//				board.setTitle(rs.getString("title"));
-//				board.setCategory(rs.getString("category"));
-//				board.setPrice(rs.getInt("price"));
-//				board.setStatus(rs.getInt("status"));
-//				board.setContent(rs.getString("content"));
-//				board.setReg_date(rs.getTimestamp("reg_date"));
-//				board.setUpd_date(rs.getTimestamp("upd_date"));
-//				board.setUuid(rs.getInt("uuid"));
-//				// 게시글 목록 추가
-//				boardList.add(board);
-//			}
-//			// 4. 게시글 목록 반환
-//
-//		} catch (SQLException e) {
-//			System.err.println("BoardDAO : list(uuid) 예외발생");
-//			e.printStackTrace();
-//		}
-//		return boardList;
-//	}
+
 //	
 //	/**
 //	 * 해당 번호 보드 조회

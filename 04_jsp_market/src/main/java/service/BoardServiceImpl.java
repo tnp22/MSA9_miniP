@@ -44,8 +44,8 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<Board> list(int uuid) {
-		
-		return null;
+		List<Board> boardList = indexDAO.list(uuid);
+		return boardList;
 	}
 
 	@Override
