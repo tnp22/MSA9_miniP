@@ -8,7 +8,7 @@ public class UserDAO extends JDBConnection {
 	public int insert(User user) {
 		int result = 0;
 		
-		String sql = " INSERT INTO user(id,passwd,name,phone,email,area,tempo,enabled)"
+		String sql = " INSERT INTO user(id,passwd,name,phone,email,area,permit,enabled)"
 				+ " VALUES( ?,?,?,?,?,?,?,?)";
 		
 		try {
@@ -19,7 +19,7 @@ public class UserDAO extends JDBConnection {
 			psmt.setString(4, user.getPhone());
 			psmt.setString(5, user.getEmail());
 			psmt.setString(6, user.getArea());
-			psmt.setInt(7, user.getPermit());
+			psmt.setInt(7, 0);
 			psmt.setBoolean(8, user.getEnabled());
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ public class UserDAO extends JDBConnection {
 				user.setPhone(rs.getString("phone"));
 				user.setEmail(rs.getString("email"));
 				user.setArea(rs.getString("area"));
-				user.setPermit(rs.getInt("tempo"));
+				user.setPermit(rs.getInt("permit"));
 				user.setEnabled(rs.getBoolean("enabled"));
 				user.setRegDate(rs.getTimestamp("reg_date"));
 				user.setUpdDate(rs.getTimestamp("upd_date"));
