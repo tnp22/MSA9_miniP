@@ -58,16 +58,16 @@
             </div>
             <div class="menu-center">
                 <nav class="pc">
-                		<c:if test="${sessionScope.loginId != null}">
-							<li>${sessionScope.loginUser.getId() }님 환영합니다.<li>
-							<li><a href="logout.jsp">로그아웃</a></li>
-						</c:if>
-                	<c:if test="${sessionScope.loginId == null}">
 						<ul>
+						<c:if test="${sessionScope.loginId == null}">
 							<li><a href="signup.jsp">회원가입</a></li>
 							<li><a href="login.jsp">로그인</a></li>
+							</c:if>
+						<c:if test="${sessionScope.loginId != null}">
+							<li>${sessionScope.loginUser.getId()}님<li>
+							<li><a href="logout.jsp">로그아웃</a></li>
+						</c:if>
 						</ul>
-					</c:if>
                 </nav>
             </div>
             <div class="menu-right">
