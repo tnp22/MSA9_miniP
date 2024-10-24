@@ -11,11 +11,37 @@ import dto.Board;
 
 public class BoardDAO extends BaseDAOImpl<Board>  {
 
+	public int insert(Board index) {
+	int insertedId=0;
+	
+	String sql = " INSERT INTO board(title,category,price,status,content,uuid)"
+			+ " VALUES( ?,?,?,?,?,?) RETURNING no";
+	
+	try {
+		psmt = con.prepareStatement(sql);
+		psmt.setString(1, index.getTitle());
+		psmt.setString(2, index.getCategory());
+		psmt.setInt(3, index.getPrice());
+		psmt.setInt(4, index.getStatus());
+		psmt.setString(5, index.getContent());
+		psmt.setInt(6, index.getUuid());
+		ResultSet rs = psmt.executeQuery();
+		if (rs.next()) {
+	        insertedId = rs.getInt("no");
+	    }
+	} catch (Exception e) {
+		System.err.println("BoardDAO : insert 시,예외 발생");
+		e.printStackTrace();
+	}
+	return insertedId;
+}
+	
 	@Override
 	public Board map(ResultSet rs) throws Exception {
 		Board board = new Board();
 		board.setNo( rs.getInt("no") );
 		board.setTitle( rs.getString("title") );
+		board.setCategory(rs.getString("category"));
 		board.setPrice( rs.getInt("price") );
 		board.setStatus( rs.getInt("status") );
 		board.setContent( rs.getString("content") );

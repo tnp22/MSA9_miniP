@@ -24,4 +24,6 @@ public interface BoardService {
 	//보드 삭제
 	public boolean delete(int no);
 	
+	
+	
 }

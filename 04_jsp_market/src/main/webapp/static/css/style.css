@@ -26,7 +26,7 @@
 section {
     width: 100%;
     min-height: 70px;
-    padding: 10px 0;
+    padding: 3px 0;
 }
 
 /* 슬라이드 */
@@ -35,7 +35,7 @@ section {
     padding-top: 0;
     width:  950px;
     height: 500px;
-    margin: 150px auto; 
+    margin: 100px auto; 
     border: 5px solid black;
     overflow: hidden;
 }
@@ -61,49 +61,34 @@ section {
     100%{ left: calc(-950px * 3); }
 }
 
-/* =========== 섹션01 : 메인 슬라이드 ========== */
-/* 
-#section1 {
-    position: relative;
-    overflow: hidden;
-    height: 600px;
-    padding-top: 0;
-}
-가로 슬라이드
-.slide {
-    position: absolute;
-    width: calc(var(--container-size) * 3);
-    animation-name: slide;
-    animation-duration: 16s;
-    animation-iteration-count: infinite;
-}
-
-.slide img {
-    width: var(--container-size);
-    height: 600px;
-    float: left;
-}
-
-@keyframes slide {
-    33.333% { left: 0; }
-    66.666% { left: calc(var(--container-size) * -1); }
-    100% { left: calc(var(--container-size) * -2);}
-} 
-*/
-
 
 /* =========== 섹션02 : 카드뷰 ========== */
-#section2 {}
+#section2 {
+	 padding-top: 0;
+	 margin-bottom: 30px;
+}
+
+
+.shop{
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+    align-items: center;
+	border: 1px;
+	margin-bottom: 60px;
+}
 
 .card-box {
+	margin: 1%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 .card {
+	margin: 10px;
     width: 100%;
     max-width: 300px;
-    height: 400px;
+    height: 300px;
     background-color: white;
     border-radius: 20px;
     box-shadow: 1px 3px 3px rgba(0,0,0,0.6);
@@ -115,23 +100,31 @@ section {
     margin-top: 10px;
 }
 .card .card-content {
+	text-align: center;
     font-size: var(--text-normal);
-    padding: 10px 20px 40px;
+    padding: 10px 10px 10px;
 }
 .card .card-bottom {
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
     align-items: center;
-    padding: 20px;
+    padding:3px;
 }
 
-.card .card-bottom i {
+.plus{
+	
+}
+
+.puls a{
+	
+}
+
+/* .card .card-bottom i {
     font-size: 32px;
     color: #FC4668;
-}
+} */
 
 /* =========== 섹션03,04 : 미디어 텍스트 섹션 ========== */
-.layout-detail {}
+/* .layout-detail {}
 .layout-detail .inner {
     display: flex;
     justify-content: center;
@@ -169,7 +162,7 @@ section {
     border-radius: 10px;
 }
 .layout-detail.reverse .detail-img { order: 2; }
-.layout-detail.reverse .detail-content { order: 1; }
+.layout-detail.reverse .detail-content { order: 1; } */
 
 
 
