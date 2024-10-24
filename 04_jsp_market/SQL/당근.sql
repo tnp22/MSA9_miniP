@@ -8,7 +8,7 @@ drop table `persistence_logins`;
 -- 스키마 이름 jsp_market
 CREATE TABLE `user` (
   `uuid` INT NOT NULL AUTO_INCREMENT COMMENT '유저번호',
-  `id` VARCHAR(45) not null COMMENT '유저id',
+  `id` VARCHAR(45) not null UNIQUE COMMENT '유저id',
   `passwd` VARCHAR(60) NOT NULL COMMENT '비밀번호',
 	`name` VARCHAR(60) NOT NULL UNIQUE COMMENT '유저이름',
   `phone` varchar(60) null COMMENT '전화번호',

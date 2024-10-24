@@ -1,3 +1,6 @@
+<%@page import="service.FilesServiceImpl"%>
+<%@page import="service.FilesService"%>
+<%@page import="dto.Files"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="service.BoardServiceImpl"%>
@@ -16,6 +19,7 @@
 <body>
 	<%
 		BoardService boardService = new BoardServiceImpl();
+		FilesService fileService = new FilesServiceImpl();
 	%>
 	<div id="header"></div>
 	<main>
@@ -39,9 +43,10 @@
 		<section id="section2">
 			<div class="shop_cotainer">
 				<div class="shop">
-					<div>최신 판매글</div>
+					<div class="shop-title">최신 판매글</div>
 					<%
 						List<Board> boardList = new ArrayList();
+						Files file = new Files();
 						boardList = boardService.list();
 						int maxCount = boardList.size();
 						int count = 0;
@@ -58,7 +63,20 @@
 						<div class="card">
 							<div class="card-img">
 								<a href="test.jsp?no=<%= + boardList.get(i).getNo() %>">
-									<img src="static/img/float.webp"  width="100%" alt="">
+									<%
+										file = fileService.select(boardList.get(i).getNo(),"board");
+										
+									if(file == null){
+									%>
+										<img src="static/img/float.webp"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/float.webp';">
+									<%
+									}else{
+									%>
+										<img src="<%=file.getFile_path() %>"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/float.webp';">
+									<%
+									}
+									%>
+								
 								</a>
 							</div>
 							<div class="card-title">
@@ -81,7 +99,7 @@
 							}
 						%>
 					</div>
-					<div class="plus">
+					<div class="shoplus">
 						<a href="">더보기..</a>
 					</div>
 				</div>

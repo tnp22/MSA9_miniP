@@ -78,6 +78,10 @@ section {
 	margin-bottom: 60px;
 }
 
+.shop-title{
+	font-size: 50px;
+}
+
 .card-box {
 	margin: 1%;
     display: flex;
@@ -110,11 +114,11 @@ section {
     padding:3px;
 }
 
-.plus{
+.shoplus{
 	
 }
 
-.puls a{
+.shopuls a{
 	
 }
 
