@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +26,13 @@ public class BoardDAO extends BaseDAOImpl<Board>  {
 		psmt.setInt(4, index.getStatus());
 		psmt.setString(5, index.getContent());
 		psmt.setInt(6, index.getUuid());
-		ResultSet rs = psmt.executeQuery();
-		if (rs.next()) {
-	        insertedId = rs.getInt("no");
+		psmt.executeUpdate();
+	    // 마지막으로 삽입된 ID 가져오기
+	    try (Statement stmt = con.createStatement()) {
+	        ResultSet rs = stmt.executeQuery("SELECT LAST_INSERT_ID();");
+	        if (rs.next()) {
+	            insertedId = rs.getInt(1);
+	        }
 	    }
 	} catch (Exception e) {
 		System.err.println("BoardDAO : insert 시,예외 발생");
@@ -101,6 +106,11 @@ public class BoardDAO extends BaseDAOImpl<Board>  {
 	}
 	return boardList;
 }
+
+	public int lastIndex() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 //	public int insert(Board index) {
 //		int result = 0;

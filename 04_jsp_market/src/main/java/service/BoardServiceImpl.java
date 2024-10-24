@@ -69,6 +69,17 @@ public class BoardServiceImpl implements BoardService {
 		}
 		return result > 0;
 	}
+
+	@Override
+	public int lastIndex() {
+		int result = 0;
+		try {
+			result = indexDAO.lastIndex();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 //	@Override
 //	public int insert(Board index) {

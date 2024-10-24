@@ -12,6 +12,9 @@ public interface BoardService {
 	//보드 선택
 	public Board select(int no);
 	
+	//마지막 보드선택
+	public int lastIndex();
+	
 	//보드 전체 조회
 	public List<Board> list();
 	
