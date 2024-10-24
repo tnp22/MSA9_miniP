@@ -16,7 +16,7 @@ public class BoardDAO extends BaseDAOImpl<Board>  {
 	int insertedId=0;
 	
 	String sql = " INSERT INTO board(title,category,price,status,content,uuid)"
-			+ " VALUES( ?,?,?,?,?,?) RETURNING no";
+			+ " VALUES( ?,?,?,?,?,?)";
 	
 	try {
 		psmt = con.prepareStatement(sql);
