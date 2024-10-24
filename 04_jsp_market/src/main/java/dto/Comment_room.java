@@ -18,5 +18,4 @@ public class Comment_room {
 	int sub_no;
 	Date reg_date;
 	Date upd_date;
-	int uuid;
 }

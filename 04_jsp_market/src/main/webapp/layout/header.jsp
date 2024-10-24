@@ -15,13 +15,13 @@
     <div class="sidebar">
         <ul class="sidemenu">
             <li>
-                <a href="">
+                <a href="create.jsp">
                     <h3>거래</h3>
                     <p>중고 물품</p>
                 </a>
             </li>
             <li>
-                <a href="chatRoom.jsp">
+                <a href="chatRoom_list.jsp">
                     <h3>채팅</h3>
                     <p>채팅룸 리스트</p>
                 </a>

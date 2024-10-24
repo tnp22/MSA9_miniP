@@ -12,6 +12,9 @@ public interface Comment_roomService {
 	//채널 선택
 	public Comment_room select(int no);
 	
+	//채널 선택
+	public Comment_room selectBoardNo(int no);
+	
 	//채널 전체 조회
 	public List<Comment_room> list();
 	

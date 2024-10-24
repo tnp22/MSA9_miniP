@@ -62,17 +62,17 @@
 						%>	
 						<div class="card">
 							<div class="card-img">
-								<a href="test.jsp?no=<%= + boardList.get(i).getNo() %>">
+								<a href="viewPage.jsp?no=<%= + boardList.get(i).getNo() %>">
 									<%
 										file = fileService.select(boardList.get(i).getNo(),"board");
 										
 									if(file == null){
 									%>
-										<img src="static/img/float.webp"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/float.webp';">
+										<img src="static/img/default_apple.png"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
 									<%
 									}else{
 									%>
-										<img src="<%=file.getFile_path() %>"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/float.webp';">
+										<img src="<%=file.getFile_path() %>"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
 									<%
 									}
 									%>
@@ -81,7 +81,7 @@
 							</div>
 							<div class="card-title">
 								<h2>
-									<a href="test.jsp?no=<%= + boardList.get(i).getNo() %>">
+									<a href="viewPage.jsp?no=<%= + boardList.get(i).getNo() %>">
 										<%= boardList.get(i).getTitle() %>
 									</a>
 								</h2>
@@ -100,7 +100,7 @@
 						%>
 					</div>
 					<div class="shoplus">
-						<a href="">더보기..</a>
+						<a href="test.jsp">더보기..</a>
 					</div>
 				</div>
 			</div>

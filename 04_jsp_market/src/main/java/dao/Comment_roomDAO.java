@@ -109,7 +109,7 @@ public class Comment_roomDAO extends JDBConnection {
 		String sql="SELECT * "
 				+ " FROM comment_room"
 				+ " WHERE no = ?";
-		Comment_room index = null;
+		Comment_room index = new Comment_room();
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1, no);
@@ -127,7 +127,31 @@ public class Comment_roomDAO extends JDBConnection {
 			System.err.println("Comment_roomDAO : 보드 번호로 조회 시 예외 발생");
 		}
 		return index;
-	}	
+	}
+	
+	public Comment_room select_boardNo(int boardno) {
+		String sql="SELECT * "
+				+ " FROM comment_room"
+				+ " WHERE board_no = ?";
+		Comment_room index = null;
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setInt(1, boardno);
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				index = new Comment_room();
+				index.setNo(rs.getInt("no"));
+				index.setBoard_no(rs.getInt("board_no"));
+				index.setMain_no(rs.getInt("main_no"));
+				index.setSub_no(rs.getInt("sub_no"));
+				index.setReg_date(rs.getTimestamp("reg_date"));
+				index.setUpd_date(rs.getTimestamp("upd_date"));
+			}
+		} catch (Exception e) {
+			System.err.println("Comment_roomDAO : 보드 번호로 조회 시 예외 발생");
+		}
+		return index;
+	}
 	
 	public boolean update(Comment_room index) {
 		boolean result = false;

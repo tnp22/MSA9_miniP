@@ -94,10 +94,11 @@ section {
     align-items: center;
 }
 .card {
+	padding-top:30px;
 	margin: 10px;
     width: 100%;
     max-width: 300px;
-    height: 350px;
+    height: 400px;
     background-color: white;
     border-radius: 20px;
     box-shadow: 1px 3px 3px rgba(0,0,0,0.6);

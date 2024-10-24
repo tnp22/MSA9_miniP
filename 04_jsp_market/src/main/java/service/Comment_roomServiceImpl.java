@@ -51,6 +51,15 @@ public class Comment_roomServiceImpl implements Comment_roomService {
 		return result;
 	}
 
-
+	@Override
+	public Comment_room selectBoardNo(int no) {
+		Comment_room result = null;
+		try {
+			result = indexDAO.select_boardNo(no);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 	
 }
