@@ -67,7 +67,7 @@
                             <input type="file" name="image" id="image" accept="image/*" multiple>
                         </div>
                            
-                        <input type="button" id="main" onclick="main.jsp" value="목록으로" />
+                        <input type="button" id="main" onclick="window.location.href='boardList.jsp';" value="목록으로" />
                         <input type="submit" id="insert" value="등록하기" />
                     </div>
                 </div>

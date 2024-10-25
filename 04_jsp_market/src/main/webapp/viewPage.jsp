@@ -114,7 +114,7 @@
                         <br><br>
                       
                    <%if (file != null && file.getFile_path() != null) {  %>
-        				<img id="uploadedImage" src="/04_jsp_market/img?no=<%= file.getNo() %>" style="max-width: 400px; height: auto;" 
+        				<img id="uploadedImage" src="/04_jsp_market/img?no=<%= file.getTable_no() %>" style="max-width: 400px; height: auto;" 
         				onerror="this.onerror=null; this.src='static/img/default_apple.png';"/>
 				  	<%
 				    } else {

@@ -3,6 +3,8 @@
 <%@ page language="java" %>
 <%@page import="java.sql.*, javax.sql.*"%>
 
+<link rel="stylesheet" type="text/css" href="static/css/declaration.css">
+
 <%
     int boardNo = Integer.parseInt(request.getParameter("no")); // 게시글 번호를 받아옴
     User user = (User) session.getAttribute("loginUser");
@@ -27,7 +29,9 @@
         <br><br>
 
         <label for="content">신고 내용: </label>
+        <div>
         <textarea name="content" id="content" required></textarea>
+        </div>
         <br><br>
 
         <input type="submit" value="신고 제출">

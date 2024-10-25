@@ -56,6 +56,16 @@
 		        }
 				response.sendRedirect("chatRoom.jsp?no="+room_no);
 			}
+			User user = new User();
+			user=(User) session.getAttribute("loginUser");
+			if(user != null){
+				if((user.getUuid()!= user1.getUuid()) && (user.getUuid()!=user2.getUuid())){
+					response.sendRedirect("test.jsp");
+				}
+			}
+			else{
+				response.sendRedirect("test.jsp");
+			}
 			%>
 			<h6 class="header-title"><%=user1.getName() %>님, <%=user2.getName() %>님</h6>
 			<button type="button" class="statButton">그냥</button>
@@ -67,7 +77,6 @@
 			List<Comment> commentList = new ArrayList();
 			commentList = commentService.list(cmR.getNo());
 			int CMcount = commentList.size();
-			User user = new User();
 			for(int i=0;i<CMcount;i++){
 		%>
 		<div class="chat">

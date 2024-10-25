@@ -1,3 +1,4 @@
+<%@page import="dto.User"%>
 <%@ include file="jstl.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -15,7 +16,7 @@
     <div class="sidebar">
         <ul class="sidemenu">
             <li>
-                <a href="create.jsp">
+                <a href="boardList.jsp">
                     <h3>거래</h3>
                     <p>중고 물품</p>
                 </a>
@@ -55,10 +56,26 @@
 							<li><a href="signup.jsp">회원가입</a></li>
 							<li><a href="login.jsp">로그인</a></li>
 							</c:if>
-						<c:if test="${sessionScope.loginId != null}">
+							<%
+							
+								if(session.getAttribute("loginUser") != null){
+							    // 아이디가 "admin"인지 확인
+							    User loggedUser = null;
+								loggedUser = (User) session.getAttribute("loginUser");
+							    if(loggedUser != null){
+							    	if ("admin".equals(loggedUser.getId())) { // 로그인된 아이디가 "admin"이 아닌 경우
+							    %>
+							    	<li><a href="adminPage_main.jsp">관리자페이지</a><li>
+	
+							    <%
+							    		}
+							    	}
+								%>
 							<li>${sessionScope.loginUser.getId()}님<li>
 							<li><a href="logout.jsp">로그아웃</a></li>
-						</c:if>
+						<%
+								}
+						%>
 						</ul>
                 </nav>
             </div>

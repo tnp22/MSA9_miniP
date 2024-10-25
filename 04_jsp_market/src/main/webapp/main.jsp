@@ -1,3 +1,4 @@
+<%@page import="dto.User"%>
 <%@page import="service.FilesServiceImpl"%>
 <%@page import="service.FilesService"%>
 <%@page import="dto.Files"%>
@@ -21,7 +22,9 @@
 		BoardService boardService = new BoardServiceImpl();
 		FilesService fileService = new FilesServiceImpl();
 	%>
-	<div id="header"></div>
+	<!-- <div id="header"></div> -->
+	<jsp:include page="layout/header.jsp"></jsp:include>
+	
 	<main>
 		<!-- 슬라이드 -->
 		<section id="section1">
@@ -40,7 +43,7 @@
 				</div>
 			</div>
 		</section>
-		<section id="section2">
+	 	<section id="section2">
 			<div class="shop_cotainer">
 				<div class="shop">
 					<div class="shop-title">최신 판매글</div>
@@ -72,7 +75,7 @@
 									<%
 									}else{
 									%>
-										<img src="<%=file.getFile_path() %>"width="100%" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
+										<img src="/04_jsp_market/img?no=<%= file.getTable_no() %>" width="100%" height="200px" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
 									<%
 									}
 									%>
@@ -100,12 +103,13 @@
 						%>
 					</div>
 					<div class="shoplus">
-						<a href="test.jsp">더보기..</a>
+						<a href="boardList.jsp">더보기..</a>
 					</div>
 				</div>
 			</div>
 		</section>
 	</main>
-	<div id="footer"></div>
+	<!-- <div id="footer"></div> -->
+	<jsp:include page="layout/footer.jsp"></jsp:include>
 </body>
 </html>
