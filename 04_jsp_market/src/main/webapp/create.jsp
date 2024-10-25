@@ -34,7 +34,7 @@
                          
                         <label for="category">주제 :&nbsp;
                         <select name="category" id="category">
-                            <option value="전자/게임">전자./게임</option>
+                            <option value="전자/게임">전자/게임</option>
                             <option value="운동">운동</option>
                             <option value="의류">의류</option>
                             <option value="가구">가구</option>

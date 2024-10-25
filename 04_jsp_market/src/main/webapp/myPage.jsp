@@ -28,8 +28,7 @@
 				response.sendRedirect("login.jsp");
 			%>
 		</c:if>
-		<c:if test="${sessionScope.loginId != null}">
-		</c:if>
+		
 		
 		<form action="user_delete.jsp" method="post">
 		
@@ -44,7 +43,7 @@
 						<p class="login" >마이페이지</p>
 					</div>
 			
-					<%
+<%-- 					<%
 				        String name;
 				        String value;
 				        
@@ -56,17 +55,18 @@
 				            name = en.nextElement().toString();             // 세션 속성이름 가져오기
 				            value = session.getAttribute(name).toString();  // 세션 속성값 가져오기
 				        }
-				    %>
+				    %> --%>
 				    
 				    <%
-				        String id = (String) session.getAttribute("loginId");
-				        User user = (User) session.getAttribute("loginUser");
+				    	String id = (String) session.getAttribute("loginId");
+				    	User user = (User) session.getAttribute("loginUser");
+				    	if(user != null){
 				        out.println("ID : " + id + "<br><br>");
 				        out.println("이름 : " + user.getName() + "<br><br>");
 				        out.println("전화번호 : " + user.getPhone() + "<br><br>");
 				        out.println("이메일 : " + user.getEmail() + "<br><br>");
 				        out.println("지역 : " + user.getArea() + "<br>");
-		       
+				    	}
 		    		%>
 		    		
 		    		<br>
