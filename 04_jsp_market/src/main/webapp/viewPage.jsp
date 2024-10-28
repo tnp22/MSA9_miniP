@@ -19,6 +19,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="layout/jstl.jsp"%>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -262,8 +263,7 @@ function openPopupdec() {
 </div>
 					<a href="boardList.jsp">더보기..</a>
         </div>
-        </div>
-              
+        
         
 			<!--  복붙해야됨 -->
 	<script>
