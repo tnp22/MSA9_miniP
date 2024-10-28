@@ -21,6 +21,12 @@
                     <p>중고 물품</p>
                 </a>
             </li>
+             <li>
+                <a href="myBoard.jsp">
+                    <h3>판매 조회</h3>
+                    <p>나의 판매글 목록 조회</p>
+                </a>
+            </li>
             <li>
                 <a href="chatRoom_list.jsp">
                     <h3>채팅</h3>

@@ -50,8 +50,10 @@ else{
 crList_before = crs.list();
 int totalCrCount = crList_before.size();
 for(int iss=0;iss<totalCrCount;iss++){
-	if(crList_before.get(iss).getSub_no()==loggedUser.getUuid()){
-		crList.add(crList_before.get(iss));
+	if(session.getAttribute("loginUser") != null){
+		if(crList_before.get(iss).getSub_no()==loggedUser.getUuid()){
+			crList.add(crList_before.get(iss));
+		}
 	}
 }
 
@@ -95,7 +97,7 @@ int totalPages = (int) Math.ceil((double) totalCrCount / pageSize); // 총 페�
 			<!-- 카드 -->
 			<%
 			int plusPage = pageSize*(pages-1);
-    for (int i = 0; i < pageSize; i++) {
+    	for (int i = 0; i < pageSize; i++) {
         // 5개씩 줄 바꿈
         if (i % 5 == 0) {
     %>
