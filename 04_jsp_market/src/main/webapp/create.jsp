@@ -44,7 +44,7 @@
 
                         <label for="status"> 판매상태 :&nbsp;
                         <select name="status" id="status">
-                            <option value="1">핀매중</option>
+                            <option value="1">판매중</option>
                             <option value="2">판매완료</option>
                         </select>
                         </label>
@@ -58,7 +58,7 @@
 
                     <div class="input-group">
                         <label for="content">내용</label><p></p>
-                        <textarea name="content" id="content" cols="30" rows="10" style="width: 100%; height:300px; resize: none;"></textarea>
+                        <textarea name="content" id="content" cols="30" rows="10" style="width: 100%; height:300px; resize: none; text-align: center;"></textarea>
                     </div>
 
                     <div class="button">

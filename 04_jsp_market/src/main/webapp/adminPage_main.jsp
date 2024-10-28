@@ -31,6 +31,9 @@
                 <li><a href="adminPage_fileList.jsp">파일 관리</a></li>
 				<li><a href="adminPage_declarationList.jsp">신고 관리</a></li>                
             </ul>
+            <div class="main-button">
+       			<a href="main.jsp" class="button">메인으로</a>
+   			</div>
         </aside>
         <section id="main-content">
             <h1>관리자 메인 페이지</h1>

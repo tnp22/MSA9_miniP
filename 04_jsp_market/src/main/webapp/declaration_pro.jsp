@@ -31,7 +31,10 @@
     
 
     if (result > 0) {
-        out.println("<script>alert('신고가 성공적으로 접수되었습니다.'); location.href='main.jsp';</script>");
+    	  out.println("<script>");
+          out.println("alert('신고가 성공적으로 접수되었습니다.');");
+          out.println("window.close();"); // 현재 팝업 창 닫기
+          out.println("</script>");
     } else {
         out.println("<script>alert('신고 접수에 실패했습니다. 다시 시도해주세요.'); history.back();</script>");
     }

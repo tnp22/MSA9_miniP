@@ -29,7 +29,7 @@ Files file = filesService.select(boardNo); // 단일 파일 객체 가져오기
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>판매글 등록하기</title>
+<title>판매글 수정하기</title>
 <script src="js/jquery-3.7.1.min.js"></script>
 <script src="js/insert.js"></script>
 <script src="hf.js"></script>
@@ -92,7 +92,7 @@ Files file = filesService.select(boardNo); // 단일 파일 객체 가져오기
 						<label for="content">내용</label>
 						<p></p>
 						<textarea name="content" id="content" cols="30" rows="10"
-							style="width: 100%; height: 300px; resize: none;"> <%=board.getContent()%> </textarea>
+							style="width: 100%; height: 300px; resize: none; text-align: center;"> <%=board.getContent()%> </textarea>
 					</div>
 
 					<div class="button">
@@ -101,8 +101,8 @@ Files file = filesService.select(boardNo); // 단일 파일 객체 가져오기
 								id="image" accept="image/*" multiple>
 						</div>
 
-						<input type="button" id="main" onclick="main.jsp" value="목록으로" />
-						<input type="submit" id="update" value="수정하기" />
+						<input type="button" id="main" onclick="location.href='viewPage.jsp?no=<%= boardNo %>'" value="취소하기" />
+						<input type="submit" id="insert" value="수정하기" />
 					</div>
 				</div>
 			</form>

@@ -68,7 +68,6 @@
 			}
 			%>
 			<h6 class="header-title"><%=user1.getName() %>님, <%=user2.getName() %>님</h6>
-			<button type="button" class="statButton">그냥</button>
 		</div>
 	</header>
 	<div class="container">

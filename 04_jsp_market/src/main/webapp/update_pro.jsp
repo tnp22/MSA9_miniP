@@ -24,9 +24,9 @@
     Iterator<FileItem> params = items.iterator();
     
     Board board = bd.select(Integer.parseInt(boardId)); // 기존 게시글 정보 가져오기
-    
     Files fff = fs.select(Integer.parseInt(boardId), "board");
 
+    
     while (params.hasNext()) {
         FileItem item = params.next();
 
@@ -60,10 +60,11 @@
             }
         }
     }
-
+    board.setUpd_date(new java.util.Date());
+    
     // 게시글 업데이트
     bd.update(board);
     fs.update(fff);
 
-    response.sendRedirect("main.jsp");
+    response.sendRedirect("viewPage.jsp?no=" + boardId);
 %>

@@ -1,3 +1,5 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dto.Comment_room"%>
 <%@page import="service.Comment_roomServiceImpl"%>
@@ -37,11 +39,28 @@
  
     UserService user1 = new UserServiceImpl();
     User sellerUser = user1.select(board.getUuid());
+    if(sellerUser == null){
+    	sellerUser = new User();
+    	sellerUser.setId("회원 탈퇴된 계정");
+    }
+    
+	List<Board> boardList = new ArrayList();
+	boardList = boardService.list();
+	int maxCount = boardList.size();
+	int count = 0;
+	System.out.println(count);
+	if(maxCount > 4){
+		count=maxCount-4;
+	}
     
 	
 %>
 
-
+<script>
+function openPopupdec() {
+    window.open("declaration.jsp?no=<%=board.getNo()%>", "팝업창", "width=600,height=400,resizable=yes");
+}
+</script>
 
 
 <!DOCTYPE html>
@@ -58,6 +77,7 @@
 <body>
 
 	<jsp:include page="layout/header.jsp"></jsp:include>
+	
 	<div class="maincontainer">
     <div class="container">
         <div class="title-box">
@@ -74,25 +94,32 @@
         		   %>
 						<div class="button">
                        <input  value="수정하기" type="button" id="update" onclick="location.href='updatePage.jsp?no=<%=board.getNo() %>'" />
-                <input type="button" id="delete" value="삭제하기" onclick="location.href='delete_pro.jsp?no=<%=board.getNo() %>'" />
+               <input type="button" id="delete" value="삭제하기" onclick="confirmDelete(<%= board.getNo() %>)" />
             </div>  
 		<%
           }
           }
-          
+          Date regDate = board.getReg_date();
+          Date updDate = board.getUpd_date();
+          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 MM월 dd일 HH시 mm분");
+          String formattedRegDate = dateFormat.format(regDate);
+          String formattedUpdDate = dateFormat.format(updDate);
           
 		%>
 
 				
     		
     	<label class="sellUser" >판매자: <%= sellerUser.getId() %></label>
-    	<br><br>
-         
+    	<br>
+   
+<br>
             <!-- 폼 액션을 서블릿으로 설정, enctype 추가 -->
       
        
             <div class="inputed">
+           <img class="bgImg" src="static/img/default_apple.png" alt="">
                     <div class="input-group">
+                         
                         <div class="title-box">
                         <h2 class="title" ><%= board.getTitle() %></h2>
                     </div>
@@ -114,7 +141,7 @@
                         <br><br>
                       
                    <%if (file != null && file.getFile_path() != null) {  %>
-        				<img id="uploadedImage" src="/04_jsp_market/img?no=<%= file.getTable_no() %>" style="max-width: 400px; height: auto;" 
+        				<img class="img_input" id="uploadedImage" src="/04_jsp_market/img?no=<%= file.getTable_no() %>" style="max-width: 400px; height: auto;" 
         				onerror="this.onerror=null; this.src='static/img/default_apple.png';"/>
 				  	<%
 				    } else {
@@ -126,17 +153,19 @@
                     <br><br>
                     
                     <div class="input-group">
-                        <pre for="content" id="content"><%= board.getContent() %> </pre>
+                        <pre for="content" id="content" style="font-size: 25px; font-weight: bold;"><%= board.getContent() %> </pre>
                         </div>
                         
-                        <!-- 신고버튼 생성 -->
+                          <!-- 신고버튼 생성 -->
                     </div>
-               			<c:if test="${sessionScope.loginId != null}">
-							
-        	<div class="btn">
-        		<input type="button" id="Declaration" onclick="location.href='declaration.jsp?no=<%=board.getNo() %>'" value="신고하기" />
-        	</div>        
-									</c:if>
+			<c:if test="${sessionScope.loginId != null}">
+
+				<div class="btn">
+					<input type="button" id="Declaration" class="dec"
+						onclick="openPopupdec()"
+						value="게시글신고" />
+				</div>
+			</c:if>
         
                 <div class="button">
                 <input type="button" id="main" onclick="window.location.href='boardList.jsp';" value="목록으로" />
@@ -182,8 +211,59 @@
         <%
         	}
         %>
+      
         </div>
-        
+       <div class="cardcontainer">
+              <label style="text-align: center;">최근에 올라온 판매글 보기</label>
+
+<div class="card-box">
+	<!-- 카드 -->
+	<%
+		for(int i = maxCount - 1; i > count - 1; i--) {
+			int boardNo1 = boardList.get(i).getNo(); // 각 게시글의 번호를 가져옵니다.
+	%>	
+		<div class="card">
+			<div class="card-img">
+				<a href="viewPage.jsp?no=<%= boardNo1 %>">
+					<%
+						file = filesService.select(boardNo1, "board");
+
+						if (file == null) {
+					%>
+							<img class="img_input" src="static/img/default_apple.png" width="100%" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
+					<%
+						} else {
+					%>
+							<img class="img_input" src="/04_jsp_market/img?no=<%= file.getTable_no() %>" width="100%" height="200px" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
+					<%
+						}
+					%>
+				</a>
+			</div>
+			<div class="card-title">
+				<h2>
+					<a href="viewPage.jsp?no=<%= boardNo1 %>">
+						<%= boardList.get(i).getTitle() %>
+					</a>
+				</h2>
+			</div>
+			<div class="card-content">
+				<p>가격 : <%= boardList.get(i).getPrice() %></p>
+			</div>
+			<div class="card-bottom">
+				<div class="item">
+					<span>분류/<%= boardList.get(i).getCategory() %></span>
+				</div>
+			</div>
+		</div>
+	<%
+		}
+	%>
+</div>
+					<a href="boardList.jsp">더보기..</a>
+        </div>
+        </div>
+              
         
 			<!--  복붙해야됨 -->
 	<script>
@@ -211,6 +291,15 @@
         // 팝업창을 열면서 파라미터를 URL로 전달
         var popupUrl = "chatRoom.jsp?no=" + encodeURIComponent(Board_no2);
         window.open(popupUrl, "PopupWindow", "width=1200,height=700");
+        }
+        
+     
+    </script>
+       <script type="text/javascript">
+        function confirmDelete(no) {
+            if (confirm("삭제하시겠습니까?")) {
+                location.href = 'delete_pro.jsp?no=' + no;
+            }
         }
     </script>
    <!--  복붙해야됨 -->

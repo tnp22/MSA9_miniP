@@ -91,7 +91,10 @@
             <li><a href="adminPage_fileList.jsp">파일 관리</a></li>
             <li><a href="adminPage_declarationList.jsp">신고 관리</a></li>                
         </ul>
-    </aside>
+            <div class="main-button">
+       			<a href="main.jsp" class="button">메인으로</a>
+   			</div>
+        </aside>
     <section id="main-content">
         <h1>게시글 수정</h1>
 

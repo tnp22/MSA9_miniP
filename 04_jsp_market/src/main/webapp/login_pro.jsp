@@ -12,8 +12,7 @@
 	//아이디 비밀번호 가져오기
 	String username = request.getParameter("username");
 	String password = request.getParameter("password");
-	System.out.println(username);
-	System.out.println(password);
+
 	//로그인 요청
 	User user=User.builder()
 					.id(username)
