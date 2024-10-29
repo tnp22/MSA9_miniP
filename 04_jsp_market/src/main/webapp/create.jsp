@@ -49,7 +49,7 @@
                         </select>
                         </label>
 
-                        <label>가격: <input type="text" id="price" name="price" required /> &nbsp;원</label>
+                        <label>가격: <input type="number" id="price" name="price" required /> &nbsp;원</label>
                     </div>
                 
                     <div class="input-group" id="img_input">
