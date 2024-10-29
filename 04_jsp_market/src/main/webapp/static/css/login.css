@@ -85,10 +85,16 @@ img { width: 100px; }
     object-fit: contain;
 }
 
+.submit_con{
+	display:flex;
+	
+}
+
 #submit { 
-			display:flex;
-			justify-content: center;   /* 수평 가운데 정렬 */
-    		align-items: center; 
+		margin: 10px;	
+		display:flex;
+		justify-content: center;   /* 수평 가운데 정렬 */
+    	align-items: center; 
 		  display: block;
 	      background-color: royalblue;
 	      color: white;
@@ -97,4 +103,5 @@ img { width: 100px; }
 	      border-radius: 10px;
 	      text-align: center;
 	      padding: 10px;
+	      cursor: pointer;
 }

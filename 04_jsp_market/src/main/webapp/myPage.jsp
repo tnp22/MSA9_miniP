@@ -42,20 +42,6 @@
 					<div class="box1">
 						<p class="login" >마이페이지</p>
 					</div>
-			
-<%-- 					<%
-				        String name;
-				        String value;
-				        
-				        Enumeration<String> en = session.getAttributeNames();
-				        int i = 0;
-				    
-				        while (en.hasMoreElements()) {
-				            i++;
-				            name = en.nextElement().toString();             // 세션 속성이름 가져오기
-				            value = session.getAttribute(name).toString();  // 세션 속성값 가져오기
-				        }
-				    %> --%>
 				    
 				    <%
 				    	String id = (String) session.getAttribute("loginId");
@@ -71,10 +57,10 @@
 		    		
 		    		<br>
 		    		<br>
-					<div>
+					<div class="submit_con">
+					<a href="mypage_update.jsp" id="submit">회 원 수 정</a>
 						<input id="submit" type="submit" value="회 원 탈 퇴" />
 					</div>
-				
 				</div>
 			
 			</div>
