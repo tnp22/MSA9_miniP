@@ -94,7 +94,6 @@ section {
     align-items: center;
 }
 .card {
-	padding-top:30px;
 	margin: 10px;
     width: 100%;
     max-width: 300px;
@@ -112,7 +111,7 @@ section {
 .card .card-content {
 	text-align: center;
     font-size: var(--text-normal);
-    padding: 10px 10px 10px;
+    padding: 10px 20px 20px;
 }
 .card .card-bottom {
     text-align: center;
