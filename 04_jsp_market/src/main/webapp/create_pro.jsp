@@ -17,7 +17,8 @@
 <%
 DiskFileUpload upload = new DiskFileUpload();
 /* String path = application.getRealPath("/userImg"); // 실제 경로 확인 */
-String path = "C:\\UPLOAD";
+/* String path = "C:\\UPLOAD"; */
+String path = application.getRealPath("/webapp/static/fimg");
 
 upload.setSizeMax(10 * 1000 * 1000); // 10MB - 파일 최대 크기
 upload.setSizeThreshold(4 * 1024); // 4MB - 메모리상의 최대 크기
