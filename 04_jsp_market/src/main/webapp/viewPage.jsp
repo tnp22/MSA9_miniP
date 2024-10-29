@@ -69,7 +69,7 @@ function openPopupdec() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>판매글 등록하기</title>
+    <title>판매글</title>
     <script src="js/jquery-3.7.1.min.js"></script>
     <script src="js/insert.js"></script>
     <script src="hf.js"></script>
