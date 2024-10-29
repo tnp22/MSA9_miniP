@@ -56,10 +56,10 @@
 		        }
 				response.sendRedirect("chatRoom.jsp?no="+room_no);
 			}
-			User user = new User();
-			user=(User) session.getAttribute("loginUser");
-			if(user != null){
-				if((user.getUuid()!= user1.getUuid()) && (user.getUuid()!=user2.getUuid())){
+			User loginuser = new User();
+			loginuser=(User) session.getAttribute("loginUser");
+			if(loginuser != null){
+				if((loginuser.getUuid()!= user1.getUuid()) && (loginuser.getUuid()!=user2.getUuid())){
 					response.sendRedirect("test.jsp");
 				}
 			}
@@ -76,16 +76,36 @@
 			List<Comment> commentList = new ArrayList();
 			commentList = commentService.list(cmR.getNo());
 			int CMcount = commentList.size();
+			User user = null;
 			for(int i=0;i<CMcount;i++){
 		%>
-		<div class="chat">
+		<%
+			user = null;
+			user= userService.select(commentList.get(i).getUuid());
+			if(commentList.get(i).getUuid()!=loginuser.getUuid()){
+		%>
+			<div class="chat">
 			<div class="human">
 				<div class="chatImg">
 					<img src="static/img/default_apple.png" alt="">
 				</div>
-				<% 	
-					user = null;
-					user= userService.select(commentList.get(i).getUuid()); %>
+				
+				<div class="human-name">
+					<H6><%=user.getName()%>님</H6>
+				</div>
+				
+			</div>
+			<div class="chat_comment"><%=commentList.get(i).getContent()%></div>
+			</div>
+		<%
+			}else{
+		%>
+		<div class="chat1">
+			<div class="human">
+				<div class="chatImg">
+					<img src="static/img/default_apple.png" alt="">
+				</div>
+				
 				<div class="human-name">
 					<H6><%=user.getName()%>님</H6>
 				</div>
@@ -93,6 +113,10 @@
 			</div>
 			<div class="chat_comment"><%=commentList.get(i).getContent()%></div>
 		</div>
+		
+		<%
+				}
+		%>
 		<%
 			}
 		%>

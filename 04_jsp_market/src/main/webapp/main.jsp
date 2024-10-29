@@ -30,16 +30,16 @@
 		<section id="section1">
 			<div class="slide">
 				<div class="item">
-					<img src="static/img/float.webp" width="100%" alt="이미지">
+					<img src="static/img/1.PNG" width="100%" alt="이미지">
 				</div>
 				<div class="item">
-					<img src="static/img/ac6.webp" width="100%" alt="이미지">
+					<img src="static/img/2.PNG" width="100%" alt="이미지">
 				</div>
 				<div class="item">
-					<img src="static/img/ac6.jpg" width="100%" alt="이미지">
+					<img src="static/img/3.jpg" width="100%" alt="이미지">
 				</div>
 				<div class="item">
-					<img src="static/img/float.webp" width="100%" alt="이미지">
+					<img src="static/img/1.PNG" width="100%" alt="이미지">
 				</div>
 			</div>
 		</section>
