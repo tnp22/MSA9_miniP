@@ -103,6 +103,7 @@ public class UserDAO extends JDBConnection {
 		boolean result = false;
 		String sql="UPDATE user"
 				+ " SET name = ?,"
+				+ " passwd = ?,"
 				+ " phone = ?,"
 				+ " email = ?,"
 				+ " area = ?"
@@ -110,10 +111,11 @@ public class UserDAO extends JDBConnection {
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1,user.getName());
-			psmt.setString(2, user.getPhone());
-			psmt.setString(3, user.getEmail());
-			psmt.setString(4, user.getArea());
-			psmt.setInt(5,user.getUuid());
+			psmt.setString(2, user.getPasswd());
+			psmt.setString(3, user.getPhone());
+			psmt.setString(4, user.getEmail());
+			psmt.setString(5, user.getArea());
+			psmt.setInt(6,user.getUuid());
 			result = psmt.executeUpdate() == 0 ? false:true;
 		} catch (Exception e) {
 			System.err.println("UserDAO : 회원 정보 업데이트 시 예외 발생");

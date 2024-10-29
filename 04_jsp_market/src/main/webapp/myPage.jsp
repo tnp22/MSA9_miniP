@@ -59,6 +59,7 @@
 		    		<br>
 					<div class="submit_con">
 					<a href="mypage_update.jsp" id="submit">회 원 수 정</a>
+					<a href="mypage_passwd.jsp" id="submit">비밀번호 수정</a>
 						<input id="submit" type="submit" value="회 원 탈 퇴" />
 					</div>
 				</div>

@@ -42,7 +42,7 @@ Files file = filesService.select(boardNo); // 단일 파일 객체 가져오기
 	<div class="container">
 		<div class="title-box">
 			<h1 class="main-title" style="margin: 10px; font-size: 50px">상품
-				등록하기</h1>
+				수정하기</h1>
 
 
 			<!-- 폼 액션을 서블릿으로 설정, enctype 추가 -->

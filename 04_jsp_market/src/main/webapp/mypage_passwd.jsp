@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="static/css/style.css"> 
 	<meta charset="UTF-8">
-	<title>회원정보 수정</title>
+	<title>비밀번호 수정</title>
 	<link rel="stylesheet" href="static/css/login.css">
 </head>
 <body>
@@ -27,7 +27,7 @@
 		</c:if>
 		
 		
-		<form action="mypage_update_pro.jsp" method="post">
+		<form action="mypage_passwd_pro.jsp" method="post">
 		
 			<div class="login-wrap">
 			
@@ -45,29 +45,9 @@
 				    	User user = (User) session.getAttribute("loginUser");
 				    	if(user != null){
 				    %>
-				    	<label>이름 : <input type="text" name="name" value="<%=user.getName()%>"/></label>
+				    	<label>반드시 바꿀 비밀번호를 잊지마시오</label>
+				    	<label>비밀번호 : <input type="text" name="psss"/></label>
 				    	<br>
-				    	<label>전화번호 : <input type="text" name="phone" value="<%=user.getPhone()%>"/></label>
-				    	<br>
-				    	<label>이메일 : <input type="text" name="email" value="<%=user.getEmail()%>"/></label>
-		    			<br>
-		    			<label>지역 : 
-		    			<select name="area" id="area" value="<%=user.getArea()%>">
-									<option value="서울">서울</option>
-									<option value="경기">경기</option>
-									<option value="인천">인천</option>
-									<option value="강원">강원</option>
-									<option value="전북">전북</option>
-									<option value="전남">전남</option>
-									<option value="경북">경북</option>
-									<option value="경남">경남</option>
-									<option value="대전">대전</option>
-									<option value="광주">광주</option>
-									<option value="대구">대구</option>
-									<option value="부산">부산</option>
-									<option value="울산">울산</option>
-									<option value="제주">제주</option>
-								</select></label>
 					<%
 						}
 					%>

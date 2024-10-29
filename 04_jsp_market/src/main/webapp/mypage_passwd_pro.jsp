@@ -8,22 +8,17 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setCharacterEncoding("UTF-8");
-	String name = request.getParameter("name");
-	String phone = request.getParameter("phone");
-	String email = request.getParameter("email");
-	String area = request.getParameter("area");
+	String passwd = request.getParameter("psss");
 	
 	// 회원 가입 요청
 	UserService userService = new UserServiceImpl();
+	String pewd = PasswordUtils.encoded(passwd);
 	
 	String loginid = (String) session.getAttribute("loginId");
 	User user = userService.select(loginid);
 	
 	// User
-	user.setName(name);
-	user.setPhone(phone);
-	user.setEmail(email);
-	user.setArea(area);
+	user.setPasswd(pewd);
 	
 
 	boolean result = userService.update(user);
@@ -35,6 +30,6 @@
 	}
 	// 회원가입 실패
 	else {
-		response.sendRedirect("mypage_update.jsp?error=0");	// 다시 회원가입페이지로 (에러포함)
+		response.sendRedirect("mypage_passwd.jsp?error=0");	// 다시 회원가입페이지로 (에러포함)
 	}
 %>
