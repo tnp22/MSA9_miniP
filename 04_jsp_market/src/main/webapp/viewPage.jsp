@@ -203,7 +203,7 @@ function openPopupdec() {
         				sub_user = user1.select(sub_no);
         		%>
 <%--         			<input type="hidden" id="Board_no2" value="<%=crList.get(iasdf).getNo() %>" /> --%>
-        			<input type="submit" onclick="openPopup2(<%=crList.get(iasdf).getNo()%>)" value="<%=sub_user.getName()%>" />
+        			<input class="vkqslek" type="submit" onclick="openPopup2(<%=crList.get(iasdf).getNo()%>)" value="<%=sub_user.getName()%>" />
         		<%
         			}
         		%>

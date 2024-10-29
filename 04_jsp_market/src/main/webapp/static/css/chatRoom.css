@@ -31,6 +31,7 @@
     border-radius: 3%;
     border: none;
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.6);
+    cursor:pointer;
 }
 
 .statButton{
@@ -162,6 +163,7 @@
     border-radius: 3%;
     border: none;
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.6);
+    cursor:pointer;
 }
 
 .chat_input-butten i{
