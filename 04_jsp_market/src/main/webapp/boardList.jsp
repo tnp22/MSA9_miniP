@@ -50,15 +50,9 @@ List<Board> paginatedList = boardList.subList(startIndex, endIndex); // 현재 �
 <title>게시판 목록</title>
 <link rel="stylesheet" href="static/css/boardList.css">
 <style>
-    .card-box {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
     .card-row {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
         width: 100%;
         margin-bottom: 20px;
     }
