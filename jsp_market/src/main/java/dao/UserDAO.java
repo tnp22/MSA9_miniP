@@ -1,5 +1,9 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import dto.User;
 
 public class UserDAO extends JDBConnection {
@@ -11,8 +15,8 @@ public class UserDAO extends JDBConnection {
 		String sql = " INSERT INTO user(id,passwd,name,phone,email,area,permit,enabled)"
 				+ " VALUES( ?,?,?,?,?,?,?,?)";
 		
-		try {
-			psmt = con.prepareStatement(sql);
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
 			psmt.setString(1, user.getId());
 			psmt.setString(2, user.getPasswd());
 			psmt.setString(3, user.getName());
@@ -40,23 +44,24 @@ public class UserDAO extends JDBConnection {
 				+ " FROM user"
 				+ " WHERE uuid = ?";
 		User user = null;
-		try {
-			psmt = con.prepareStatement(sql);
+		try (Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);){
 			psmt.setInt(1, uuid);
-			rs=psmt.executeQuery();
-			if(rs.next()) {
-				user = new User();
-				user.setUuid(rs.getInt("uuid"));
-				user.setId(rs.getString("id"));
-				user.setPasswd(rs.getString("passwd"));
-				user.setName(rs.getString("name"));
-				user.setPhone(rs.getString("phone"));
-				user.setEmail(rs.getString("email"));
-				user.setArea(rs.getString("area"));
-				user.setPermit(rs.getInt("permit"));
-				user.setEnabled(rs.getBoolean("enabled"));
-				user.setRegDate(rs.getTimestamp("reg_date"));
-				user.setUpdDate(rs.getTimestamp("upd_date"));
+			try(ResultSet rs=psmt.executeQuery();){
+				if(rs.next()) {
+					user = new User();
+					user.setUuid(rs.getInt("uuid"));
+					user.setId(rs.getString("id"));
+					user.setPasswd(rs.getString("passwd"));
+					user.setName(rs.getString("name"));
+					user.setPhone(rs.getString("phone"));
+					user.setEmail(rs.getString("email"));
+					user.setArea(rs.getString("area"));
+					user.setPermit(rs.getInt("permit"));
+					user.setEnabled(rs.getBoolean("enabled"));
+					user.setRegDate(rs.getTimestamp("reg_date"));
+					user.setUpdDate(rs.getTimestamp("upd_date"));
+				}
 			}
 		} catch (Exception e) {
 			System.err.println("UserDAO : 회원 정보 번호로 조회 시 예외 발생");
@@ -75,23 +80,25 @@ public class UserDAO extends JDBConnection {
 				+ " FROM user"
 				+ " WHERE id = ?";
 		User user = null;
-		try {
-			psmt = con.prepareStatement(sql);
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
+			
 			psmt.setString(1, id);
-			rs=psmt.executeQuery();
-			if(rs.next()) {
-				user = new User(); // User 객체 생성
-				user.setUuid(rs.getInt("uuid"));
-				user.setId(rs.getString("id"));
-				user.setPasswd(rs.getString("passwd"));
-				user.setName(rs.getString("name"));
-				user.setPhone(rs.getString("phone"));
-				user.setEmail(rs.getString("email"));
-				user.setArea(rs.getString("area"));
-				user.setPermit(rs.getInt("permit"));
-				user.setEnabled(rs.getBoolean("enabled"));
-				user.setRegDate(rs.getTimestamp("reg_date"));
-				user.setUpdDate(rs.getTimestamp("upd_date"));
+			try(ResultSet rs=psmt.executeQuery();){
+				if(rs.next()) {
+					user = new User(); // User 객체 생성
+					user.setUuid(rs.getInt("uuid"));
+					user.setId(rs.getString("id"));
+					user.setPasswd(rs.getString("passwd"));
+					user.setName(rs.getString("name"));
+					user.setPhone(rs.getString("phone"));
+					user.setEmail(rs.getString("email"));
+					user.setArea(rs.getString("area"));
+					user.setPermit(rs.getInt("permit"));
+					user.setEnabled(rs.getBoolean("enabled"));
+					user.setRegDate(rs.getTimestamp("reg_date"));
+					user.setUpdDate(rs.getTimestamp("upd_date"));
+				}
 			}
 		} catch (Exception e) {
 			System.err.println("UserDAO : 회원 aaa정보 번호로 조회 시 예외 발생");
@@ -108,8 +115,8 @@ public class UserDAO extends JDBConnection {
 				+ " email = ?,"
 				+ " area = ?"
 				+ " WHERE uuid = ?";
-		try {
-			psmt = con.prepareStatement(sql);
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
 			psmt.setString(1,user.getName());
 			psmt.setString(2, user.getPasswd());
 			psmt.setString(3, user.getPhone());
@@ -128,8 +135,7 @@ public class UserDAO extends JDBConnection {
 		String sql="DELETE "
 				+ " FROM user"
 				+ " WHERE uuid = ?";
-		try {
-			psmt = con.prepareStatement(sql);
+		try(PreparedStatement psmt = con.prepareStatement(sql);) {
 			psmt.setInt(1, uuid);
 			result = psmt.executeUpdate() == 0 ? false:true;
 		} catch (Exception e) {

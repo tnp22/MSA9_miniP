@@ -1,6 +1,10 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +18,8 @@ public class CommentDAO extends JDBConnection {
 		String sql = " INSERT INTO comment(room_no,content,uuid)"
 				+ " VALUES( ?,?,?)";
 		
-		try {
-			psmt = con.prepareStatement(sql);
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
 			psmt.setInt(1, index.getRoom_no());
 			psmt.setString(2, index.getContent());
 			psmt.setInt(3, index.getUuid());
@@ -34,25 +38,29 @@ public class CommentDAO extends JDBConnection {
 		// SQL 작성
 		String sql = "SELECT * " + "FROM comment";
 
-		try {
+		try(Connection conn = DataSource.getInstance().getConnection();
+				Statement stmt = conn.createStatement();) {
 			// 1. SQL 실행 객체 생성 - Statement (stmt)
-			stmt = con.createStatement();
+			
 			// 2. SQL 실행 요청 -> 결과 ResultSet (rs)
-			rs = stmt.executeQuery(sql);
-			// 3. 조회된 결과를 리스트(boardList)에 추가
-			while (rs.next()) {
-				Comment cm = new Comment();
-				// 결과 데이터 가져오기
-				// rs.getXXX("컬럼명") : 해당 컬럼의 데이터를 반환
-				cm.setNo(rs.getInt("no"));
-				cm.setRoom_no(rs.getInt("room_no"));
-				cm.setContent(rs.getString("content"));
-				cm.setReg_date(rs.getTimestamp("reg_date"));
-				cm.setUpd_date(rs.getTimestamp("upd_date"));
-				cm.setUuid(rs.getInt("uuid"));
-				// 게시글 목록 추가
-				cmList.add(cm);
+			try(ResultSet rs = stmt.executeQuery(sql);){
+				// 3. 조회된 결과를 리스트(boardList)에 추가
+				while (rs.next()) {
+					Comment cm = new Comment();
+					// 결과 데이터 가져오기
+					// rs.getXXX("컬럼명") : 해당 컬럼의 데이터를 반환
+					cm.setNo(rs.getInt("no"));
+					cm.setRoom_no(rs.getInt("room_no"));
+					cm.setContent(rs.getString("content"));
+					cm.setReg_date(rs.getTimestamp("reg_date"));
+					cm.setUpd_date(rs.getTimestamp("upd_date"));
+					cm.setUuid(rs.getInt("uuid"));
+					// 게시글 목록 추가
+					cmList.add(cm);
+				}
 			}
+			
+
 			// 4. 게시글 목록 반환
 
 		} catch (SQLException e) {
@@ -71,25 +79,27 @@ public class CommentDAO extends JDBConnection {
 				+ " FROM comment"
 				+ " WHERE room_no = ?";
 
-		try {
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
 			// 1. SQL 실행 객체 생성 - Statement (stmt)
-			psmt = con.prepareStatement(sql);
+			
 			psmt.setInt(1, room_no);
 			// 2. SQL 실행 요청 -> 결과 ResultSet (rs)
-			rs = psmt.executeQuery();
-			// 3. 조회된 결과를 리스트(boardList)에 추가
-			while (rs.next()) {
-				Comment cm = new Comment();
-				// 결과 데이터 가져오기
-				// rs.getXXX("컬럼명") : 해당 컬럼의 데이터를 반환
-				cm.setNo(rs.getInt("no"));
-				cm.setRoom_no(rs.getInt("room_no"));
-				cm.setContent(rs.getString("content"));
-				cm.setReg_date(rs.getTimestamp("reg_date"));
-				cm.setUpd_date(rs.getTimestamp("upd_date"));
-				cm.setUuid(rs.getInt("uuid"));
-				// 게시글 목록 추가
-				cmList.add(cm);
+			try(ResultSet rs = psmt.executeQuery();){
+				// 3. 조회된 결과를 리스트(boardList)에 추가
+				while (rs.next()) {
+					Comment cm = new Comment();
+					// 결과 데이터 가져오기
+					// rs.getXXX("컬럼명") : 해당 컬럼의 데이터를 반환
+					cm.setNo(rs.getInt("no"));
+					cm.setRoom_no(rs.getInt("room_no"));
+					cm.setContent(rs.getString("content"));
+					cm.setReg_date(rs.getTimestamp("reg_date"));
+					cm.setUpd_date(rs.getTimestamp("upd_date"));
+					cm.setUuid(rs.getInt("uuid"));
+					// 게시글 목록 추가
+					cmList.add(cm);
+				}
 			}
 			// 4. 게시글 목록 반환
 
@@ -110,18 +120,20 @@ public class CommentDAO extends JDBConnection {
 				+ " FROM board"
 				+ " WHERE no = ?";
 		Comment index = null;
-		try {
-			psmt = con.prepareStatement(sql);
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
+			
 			psmt.setInt(1, no);
-			rs=psmt.executeQuery();
-			if(rs.next()) {
-				index = new Comment();
-				index.setNo(rs.getInt("no"));
-				index.setRoom_no(rs.getInt("room_no"));
-				index.setContent(rs.getString("content"));
-				index.setReg_date(rs.getTimestamp("reg_date"));
-				index.setUpd_date(rs.getTimestamp("upd_date"));
-				index.setUuid(rs.getInt("uuid"));
+			try(ResultSet rs=psmt.executeQuery();){
+				if(rs.next()) {
+					index = new Comment();
+					index.setNo(rs.getInt("no"));
+					index.setRoom_no(rs.getInt("room_no"));
+					index.setContent(rs.getString("content"));
+					index.setReg_date(rs.getTimestamp("reg_date"));
+					index.setUpd_date(rs.getTimestamp("upd_date"));
+					index.setUuid(rs.getInt("uuid"));
+				}
 			}
 		} catch (Exception e) {
 			System.err.println("CommentDAO : 보드 번호로 조회 시 예외 발생");
@@ -134,8 +146,8 @@ public class CommentDAO extends JDBConnection {
 		String sql="UPDATE comment"
 				+ " content = ?,"
 				+ " WHERE uuid = ?";
-		try {
-			psmt = con.prepareStatement(sql);
+		try(Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);) {
 			psmt.setString(1,index.getContent());
 			psmt.setInt(2,index.getUuid());
 			result = psmt.executeUpdate() == 0 ? false:true;
@@ -150,8 +162,8 @@ public class CommentDAO extends JDBConnection {
 		String sql="DELETE "
 				+ " FROM comment"
 				+ " WHERE no = ?";
-		try {
-			psmt = con.prepareStatement(sql);
+		try (Connection conn = DataSource.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(sql);){
 			psmt.setInt(1, no);
 			result = psmt.executeUpdate() == 0 ? false:true;
 		} catch (Exception e) {
