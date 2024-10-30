@@ -142,7 +142,7 @@ function openPopupdec() {
                         <br><br>
                       
                    <%if (file != null && file.getFile_path() != null) {  %>
-        				<img class="img_input" id="uploadedImage" src="/04_jsp_market/img?no=<%= file.getTable_no() %>" style="max-width: 400px; height: auto;" 
+        				<img class="img_input" id="uploadedImage" src="/jsp_market/img?no=<%= file.getTable_no() %>" style="max-width: 400px; height: auto;" 
         				onerror="this.onerror=null; this.src='static/img/default_apple.png';"/>
 				  	<%
 				    } else {
