@@ -46,7 +46,7 @@
 				    	if(user != null){
 				    %>
 				    	<label>반드시 바꿀 비밀번호를 잊지마시오</label>
-				    	<label>비밀번호 : <input type="text" name="psss"/></label>
+				    	<label>비밀번호 : <input type="text" name="psss" required="required"/></label>
 				    	<br>
 					<%
 						}
