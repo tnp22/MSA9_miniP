@@ -56,6 +56,8 @@
 	cookieRememberMe.setPath("/");
 	cookieToken.setPath("/");
 	// 쿠키 만료시간 설정 - 7일
+	cookieRememberId.setMaxAge(60 * 60 * 24 * 7); // 7일 동안 유지
+	cookieUsername.setMaxAge(60 * 60 * 24 * 7);
 	cookieRememberMe.setMaxAge(60*60*24*7);
 	cookieToken.setMaxAge(60*60*24*7);
 	
