@@ -144,7 +144,7 @@ public class CommentDAO extends JDBConnection {
 	public boolean update(Comment index) {
 		boolean result = false;
 		String sql="UPDATE comment"
-				+ " content = ?,"
+				+ " set content = ?"
 				+ " WHERE uuid = ?";
 		try(Connection conn = DataSource.getInstance().getConnection();
 				PreparedStatement psmt = conn.prepareStatement(sql);) {
