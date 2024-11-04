@@ -235,7 +235,7 @@ function openPopupdec() {
 					<%
 						} else {
 					%>
-							<img class="img_input" src="/04_jsp_market/img?no=<%= file.getTable_no() %>" width="100%" height="200px" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
+							<img class="img_input" src="/jsp_market/img?no=<%= file.getTable_no() %>" width="100%" height="200px" alt="" onerror="this.onerror=null; this.src='static/img/default_apple.png';">
 					<%
 						}
 					%>

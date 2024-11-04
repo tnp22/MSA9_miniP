@@ -1,3 +1,4 @@
+<%@page import="java.util.Collections"%>
 <%@page import="java.util.stream.Collectors"%>
 <%@page import="service.BoardService"%>
 <%@page import="service.BoardServiceImpl"%>
@@ -25,9 +26,10 @@ String keyword = request.getParameter("keyword") != null ? request.getParameter(
 List<Board> boardList = boardService.list(); // 전체 게시글 목록 가져오기
 
 // 최신 글 순으로 정렬
-boardList = boardList.stream()
+/* boardList = boardList.stream()
     .sorted((b1, b2) -> b2.getReg_date().compareTo(b1.getReg_date()))
-    .collect(Collectors.toList());
+    .collect(Collectors.toList()); */
+Collections.reverse(boardList);
 
 // 검색어로 필터링
 if (!keyword.isEmpty()) {

@@ -82,8 +82,8 @@ while (params.hasNext()) {
 		try {
 	item.write(file); // 파일 저장
 		} catch (Exception e) {
-	out.println("파일 저장 실패: " + e.getMessage());
-	return; // 오류 발생 시 종료
+	//out.println("파일 저장 실패: " + e.getMessage());
+	//return; // 오류 발생 시 종료
 		}
 	}
 }

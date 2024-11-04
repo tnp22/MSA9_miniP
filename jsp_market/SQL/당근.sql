@@ -10,7 +10,7 @@ CREATE TABLE `user` (
   `uuid` INT NOT NULL AUTO_INCREMENT COMMENT '유저번호',
   `id` VARCHAR(45) not null UNIQUE COMMENT '유저id',
   `passwd` VARCHAR(60) NOT NULL COMMENT '비밀번호',
-	`name` VARCHAR(1000) NOT NULL UNIQUE COMMENT '유저이름',
+`name` VARCHAR(500) NOT NULL UNIQUE COMMENT '유저이름',
   `phone` varchar(60) null COMMENT '전화번호',
   `email` varchar(60) NULL COMMENT '이메일',
   `area` varchar(40) null COMMENT '지역',
