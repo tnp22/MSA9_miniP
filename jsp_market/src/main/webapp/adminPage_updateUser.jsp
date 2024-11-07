@@ -101,7 +101,7 @@
         <%
             String uuid = request.getParameter("uuid");
             if (uuid == null || uuid.isEmpty()) {
-                out.println("<p>잘못된 접근입니다.</p>");
+                //out.println("<p>잘못된 접근입니다.</p>");
                 return;
             }
 

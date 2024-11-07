@@ -68,7 +68,7 @@
             if (jdbc.con != null) try { jdbc.con.close(); } catch (Exception e) {}
         }
     } else {
-        out.println("<script>showAlertAndRedirect('잘못된 접근입니다.');</script>");
+       /*  out.println("<script>showAlertAndRedirect('잘못된 접근입니다.');</script>"); */
     }
 %>
 
