@@ -52,10 +52,10 @@
 ---
 
 
-
+![image](https://github.com/user-attachments/assets/53857138-bc3b-451f-be89-f0863013126d)
 <details>
 <summary><h2>📑 <strong>요구사항 정의서</strong></h2></summary>
-  ![image](https://github.com/user-attachments/assets/53857138-bc3b-451f-be89-f0863013126d)
+  
 </details>
 
 ---
